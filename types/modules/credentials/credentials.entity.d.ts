@@ -1,5 +1,5 @@
 import { BaseEntity } from '../../common/base.entity';
-import { OauthType } from '../enum/router';
+import { OauthType } from '../../../enum/router';
 import { UserEntity } from '../user/user.entity';
 import { IOauthUserInfo } from '../user/user.interface';
 
