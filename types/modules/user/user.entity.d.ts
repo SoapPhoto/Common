@@ -44,6 +44,8 @@ export declare class UserEntity extends BaseEntity {
   /** 用户头像 */
   avatar: string;
 
+  cover?: string;
+
   /** 个人介绍 */
   bio: string;
 
