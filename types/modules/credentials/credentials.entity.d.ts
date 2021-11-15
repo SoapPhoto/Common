@@ -1,4 +1,4 @@
-import { BaseEntity } from '../../common/base.entity';
+import { BaseEntity } from 'typeorm';
 import { OauthType } from '../../../enum/router';
 import { UserEntity } from '../user/user.entity';
 import { IOauthUserInfo } from '../user/user.interface';

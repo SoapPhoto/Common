@@ -4,99 +4,48 @@ import { BaseEntity } from '../../common/base.entity';
 import { TagEntity } from '../tag/tag.entity';
 import { UserEntity } from '../user/user.entity';
 import { CollectionPictureEntity } from '../collection/picture/collection-picture.entity';
+import { BaiduClassify } from '../../shared/baidu/interface/baidu.interface';
 import { PictureUserActivityEntity } from './user-activity/user-activity.entity';
 import { CollectionEntity } from '../collection/collection.entity';
 import { BadgeEntity } from '../badge/badge.entity';
 import { PictureLocation } from './interface/location.interface';
-
 export interface IRelatedCollections {
-  count: number;
-  data: CollectionEntity[];
+    count: number;
+    data: CollectionEntity[];
 }
 export declare class PictureEntity extends BaseEntity {
-  readonly id: number;
-
-  /** 七牛的key */
-  readonly key: string;
-
-  /** 七牛的hash */
-  readonly hash: string;
-
-  /** 图片标题 */
-  readonly title: string;
-
-  /** 图片介绍 */
-  readonly bio: string;
-
-  readonly isPrivate: boolean;
-
-  /** 浏览次数 */
-  views: number;
-
-  /** 图片原始文件名 */
-  readonly originalname: string;
-
-  /** 图片类型 */
-  readonly mimetype: string;
-
-  /** 图片大小 */
-  readonly size: number;
-
-  /** 当前登录用户是否喜欢 */
-  isLike: boolean;
-
-  /** picture喜欢的数量 */
-  likedCount: number;
-
-  /** 图片评论数量 */
-  commentCount: number;
-
-  /** 图片的主色调 */
-  readonly color: string;
-
-  /** 图片的颜色是明还是暗 */
-  readonly isDark: boolean;
-
-  /** 图片长度 */
-  readonly height: number;
-
-  /** 图片宽度 */
-  readonly width: number;
-
-  /** 设备品牌 */
-  readonly make?: string;
-
-  /** 设备型号 */
-  readonly model?: string;
-
-  /** blurhash */
-  readonly blurhash?: string;
-
-  /** EXIF信息 */
-  readonly exif?: IEXIF;
-
-  /** EXIF信息 */
-  readonly location?: PictureLocation;
-
-  /** 图片作者 */
-  readonly user: UserEntity;
-
-  /** 图片的评论 */
-  readonly comments: CommentEntity[];
-
-  readonly activities: PictureUserActivityEntity[];
-
-  tags: TagEntity[];
-
-  keywords: string;
-
-  badge: BadgeEntity[];
-
-  info: CollectionPictureEntity[];
-
-  relatedCollections: IRelatedCollections;
-
-  blurhashSrc?: string;
-
-  get currentCollections(): CollectionEntity[];
+    readonly id: number;
+    readonly key: string;
+    readonly hash: string;
+    readonly title: string;
+    readonly bio: string;
+    readonly isPrivate: boolean;
+    views: number;
+    readonly originalname: string;
+    readonly mimetype: string;
+    readonly size: number;
+    isLike: boolean;
+    likedCount: number;
+    commentCount: number;
+    readonly color: string;
+    readonly isDark: boolean;
+    readonly height: number;
+    readonly width: number;
+    readonly make?: string;
+    readonly model?: string;
+    readonly blurhash?: string;
+    readonly exif?: IEXIF;
+    readonly location?: PictureLocation;
+    readonly classify?: BaiduClassify[];
+    readonly user: UserEntity;
+    readonly comments: CommentEntity[];
+    readonly activities: PictureUserActivityEntity[];
+    tags: TagEntity[];
+    keywords: string;
+    deleted: number;
+    badge: BadgeEntity[];
+    info: CollectionPictureEntity[];
+    relatedCollections: IRelatedCollections;
+    blurhashSrc?: string;
+    get currentCollections(): CollectionEntity[];
 }
