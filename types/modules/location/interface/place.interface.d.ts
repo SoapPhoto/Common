@@ -13,6 +13,7 @@ export declare class Place {
     name: string;
     province: string;
     city: string;
+    district: string;
     area: string;
     location: ILocation;
     address: string;

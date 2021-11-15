@@ -8,7 +8,7 @@ import { BaiduClassify } from '../../shared/baidu/interface/baidu.interface';
 import { PictureUserActivityEntity } from './user-activity/user-activity.entity';
 import { CollectionEntity } from '../collection/collection.entity';
 import { BadgeEntity } from '../badge/badge.entity';
-import { PictureLocation } from './interface/location.interface';
+import { LocationEntity } from '../location/location.entity';
 export interface IRelatedCollections {
     count: number;
     data: CollectionEntity[];
@@ -35,7 +35,7 @@ export declare class PictureEntity extends BaseEntity {
     readonly model?: string;
     readonly blurhash?: string;
     readonly exif?: IEXIF;
-    readonly location?: PictureLocation;
+    readonly location?: LocationEntity;
     readonly classify?: BaiduClassify[];
     readonly user: UserEntity;
     readonly comments: CommentEntity[];
