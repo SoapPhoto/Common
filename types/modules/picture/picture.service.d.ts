@@ -16,6 +16,7 @@ import { CollectionService } from '../collection/collection.service';
 import { CommentService } from '../comment/comment.service';
 import { BadgeService } from '../badge/badge.service';
 import { FollowService } from '../follow/follow.service';
+import { LocationService } from '../location/location.service';
 export declare class PictureService {
     private readonly logger;
     private readonly activityService;
@@ -25,87 +26,35 @@ export declare class PictureService {
     private readonly commentService;
     private readonly badgeService;
     private readonly followService;
+    private readonly locationService;
     private pictureRepository;
     private readonly redisManager;
-    constructor(logger: LoggingService, activityService: PictureUserActivityService, tagService: TagService, userService: UserService, collectionService: CollectionService, commentService: CommentService, badgeService: BadgeService, followService: FollowService, pictureRepository: Repository<PictureEntity>, redisManager: RedisManager);
+    constructor(logger: LoggingService, activityService: PictureUserActivityService, tagService: TagService, userService: UserService, collectionService: CollectionService, commentService: CommentService, badgeService: BadgeService, followService: FollowService, locationService: LocationService, pictureRepository: Repository<PictureEntity>, redisManager: RedisManager);
     getPictureKeyword(picture: PictureEntity): string;
     create(data: Partial<PictureEntity>): Promise<PictureEntity>;
-    update(id: number, { tags, ...data }: UpdatePictureDot, user: UserEntity): Promise<Record<string, any>>;
-    search: (words: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: PictureEntity[];
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
-    getNewList: (user: Maybe<UserEntity>, query: GetNewPictureListDto, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: PictureEntity[];
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    update(id: number, { tags, ...data }: UpdatePictureDot, user: UserEntity): Promise<PictureEntity>;
+    search: (words: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<PictureEntity[]>>;
+    getNewList: (user: Maybe<UserEntity>, query: GetNewPictureListDto, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<PictureEntity[]>>;
     addViewCount(id: number): Promise<import("typeorm").UpdateResult>;
     findOne(id: number, user: Maybe<UserEntity>, select?: GraphQLResolveInfo): Promise<PictureEntity>;
     findOne(id: number, user: Maybe<UserEntity>, toPlain: boolean, info?: GraphQLResolveInfo): Promise<Record<string, any>>;
-    find(user: Maybe<UserEntity>, type: PicturesType, query: GetNewPictureListDto, info: GraphQLResolveInfo): Promise<{
-        count: number;
-        data: PictureEntity[];
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    find(user: Maybe<UserEntity>, type: PicturesType, query: GetNewPictureListDto, info: GraphQLResolveInfo): Promise<import("../../common/utils/request").IListRequest<PictureEntity[]>>;
     likePicture: (id: number, user: UserEntity, data: boolean) => Promise<PictureEntity>;
-    getUserPicture: (idOrName: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
-    getFeedPictures(user: UserEntity, query: GetPictureListDto, info: GraphQLResolveInfo): Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
-    getUserLikePicture: (idOrName: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
-    getUserChoicePicture: (idOrName: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
-    getTagPictureList: (name: string, user: Maybe<UserEntity>, query: GetTagPictureListDto, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    getUserPicture: (idOrName: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
+    getFeedPictures(user: UserEntity, query: GetPictureListDto, info: GraphQLResolveInfo): Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
+    getUserLikePicture: (idOrName: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
+    getUserChoicePicture: (idOrName: string, query: GetPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
+    getTagPictureList: (name: string, user: Maybe<UserEntity>, query: GetTagPictureListDto, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
     getPictureRelated: (id: number, limit: number, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => Promise<PictureEntity[]>;
     delete: (id: number, user: UserEntity) => Promise<{
         done: boolean;
     }>;
     getUserPreviewPictures(username: string, limit: number): Promise<PictureEntity[]>;
     getCurrentCollections(id: number, user: UserEntity): Promise<Record<string, any>>;
-    getPictureHotInfoList: (user: Maybe<UserEntity>, query: GetPictureListDto, info: GraphQLResolveInfo) => Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    getPictureHotInfoList: (user: Maybe<UserEntity>, query: GetPictureListDto, info: GraphQLResolveInfo) => Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
     getCollectionPictureListQuery: (id: number, user: Maybe<UserEntity>, info: GraphQLResolveInfo) => SelectQueryBuilder<PictureEntity>;
     calculateHotPictures(): Promise<any[]>;
+    findCommentCounts(ids: readonly number[]): Promise<number[]>;
     select: (user: Maybe<UserEntity>, options?: ISelectOptions | undefined) => SelectQueryBuilder<PictureEntity>;
     selectList: (user: Maybe<UserEntity>, query: GetPictureListDto, options?: ISelectOptions | undefined) => SelectQueryBuilder<PictureEntity>;
     selectInfo: <T>(q: SelectQueryBuilder<T>, user: Maybe<UserEntity>, options?: ISelectOptions | undefined) => void;

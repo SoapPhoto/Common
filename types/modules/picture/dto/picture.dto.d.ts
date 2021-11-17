@@ -22,5 +22,6 @@ export declare class UpdatePictureDot implements Partial<PictureEntity> {
     readonly title: string;
     readonly bio: string;
     readonly isPrivate: boolean;
+    locationUid: string;
     readonly tags: any;
 }

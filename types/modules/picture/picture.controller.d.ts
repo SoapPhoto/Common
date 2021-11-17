@@ -21,7 +21,7 @@ export declare class PictureController {
     deletePicture(id: number, user: UserEntity): Promise<{
         done: boolean;
     }>;
-    updatePicture(id: number, data: UpdatePictureDot, user: UserEntity): Promise<Record<string, any>>;
+    updatePicture(id: number, data: UpdatePictureDot, user: UserEntity): Promise<import("./picture.entity").PictureEntity>;
     getList(user: Maybe<UserEntity>, query: GetPictureListDto): Promise<void>;
     getImageClassify({ image }: {
         image: string;
@@ -29,13 +29,7 @@ export declare class PictureController {
     getOne(id: string, user: UserEntity): Promise<Record<string, any>>;
     likePicture(id: string, user: UserEntity): Promise<import("./picture.entity").PictureEntity>;
     unlikePicture(id: string, user: UserEntity): Promise<import("./picture.entity").PictureEntity>;
-    getPictureCommentList(id: string, user: Maybe<UserEntity>, query: GetPictureCommentListDto): Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    getPictureCommentList(id: string, user: Maybe<UserEntity>, query: GetPictureCommentListDto): Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
     getBaiduToken(): Promise<import("../../shared/baidu/interface/baidu.interface").BaiduToken>;
     createPictureComment(user: UserEntity): Promise<{
         message: string;

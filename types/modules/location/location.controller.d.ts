@@ -5,6 +5,6 @@ export declare class LocationController {
     private readonly locationService;
     private readonly mapboxService;
     constructor(locationService: LocationService, mapboxService: MapboxService);
-    searchPlace(region: string, value: string, type?: LocationClientType): Promise<import("./interface/place.interface").Place[] | import("../../shared/mapbox/mapbox.interface").IMapboxGeocodeFeature[]>;
+    searchPlace(region: string, value: string, type?: LocationClientType): Promise<import("../../shared/mapbox/mapbox.interface").IMapboxGeocodeFeature[] | import("./interface/place.interface").Place[]>;
     reverseGeocoding(location: string): Promise<import("./interface/place.interface").Place[]>;
 }
