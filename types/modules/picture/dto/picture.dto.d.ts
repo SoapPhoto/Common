@@ -1,6 +1,6 @@
 import { PaginationDto } from '../../../common/dto/pagination.dto';
+import { LocationEntity } from '../../location/location.entity';
 import { PictureEntity } from '../picture.entity';
-import { PictureLocation } from '../interface/location.interface';
 export declare class GetPictureListDto extends PaginationDto {
 }
 export declare class GetNewPictureListDto extends PaginationDto {
@@ -16,11 +16,12 @@ export declare class CreatePictureAddDot implements Partial<PictureEntity> {
     readonly bio: string;
     readonly tags: any;
     readonly isPrivate: boolean;
-    readonly location?: PictureLocation;
+    readonly location?: LocationEntity;
 }
 export declare class UpdatePictureDot implements Partial<PictureEntity> {
     readonly title: string;
     readonly bio: string;
     readonly isPrivate: boolean;
+    locationUid: string;
     readonly tags: any;
 }

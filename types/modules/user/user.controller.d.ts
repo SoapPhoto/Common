@@ -22,11 +22,5 @@ export declare class UserController {
     updateUserSetting(username: string, user: UserEntity, body: UpdateProfileSettingDto): Promise<Record<string, any>>;
     getIdInfo(id: string, user: Maybe<UserEntity>): Promise<UserEntity | undefined>;
     getNameInfo(username: string, user: Maybe<UserEntity>): Promise<UserEntity | undefined>;
-    getUserCollections(idOrName: string, user: Maybe<UserEntity>, query: GetUserCollectionListDto): Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    getUserCollections(idOrName: string, user: Maybe<UserEntity>, query: GetUserCollectionListDto): Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
 }

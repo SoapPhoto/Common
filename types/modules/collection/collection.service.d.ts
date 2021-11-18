@@ -21,20 +21,8 @@ export declare class CollectionService {
     removePicture(id: number, pictureId: number, _user: UserEntity): Promise<void>;
     selectInfo<E = CollectionEntity>(q: SelectQueryBuilder<E>, user: Maybe<UserEntity>): void;
     getCollectionDetail(id: number, user: Maybe<UserEntity>): Promise<Record<string, any>>;
-    getCollectionPictureList(id: number, query: GetCollectionPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo): Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
-    getUserCollectionList(idOrName: string, query: GetUserCollectionListDto, user: Maybe<UserEntity>): Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    getCollectionPictureList(id: number, query: GetCollectionPictureListDto, user: Maybe<UserEntity>, info: GraphQLResolveInfo): Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
+    getUserCollectionList(idOrName: string, query: GetUserCollectionListDto, user: Maybe<UserEntity>): Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
     deleteCollection(id: number, user: UserEntity): Promise<void>;
     pictureRelatedCollection(pictureId: number, limit?: number): Promise<{
         data: Record<string, any>;

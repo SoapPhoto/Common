@@ -7,13 +7,7 @@ export declare class CollectionResolver {
     private readonly collectionService;
     constructor(collectionService: CollectionService);
     collection(user: Maybe<UserEntity>, id: number): Promise<Record<string, any>>;
-    collectionPictures(user: Maybe<UserEntity>, query: GetCollectionPictureListDto, id: number, info: GraphQLResolveInfo): Promise<{
-        count: number;
-        data: Record<string, any>;
-        page: number;
-        pageSize: number;
-        timestamp: number;
-    }>;
+    collectionPictures(user: Maybe<UserEntity>, query: GetCollectionPictureListDto, id: number, info: GraphQLResolveInfo): Promise<import("../../common/utils/request").IListRequest<Record<string, any>>>;
     addPictureCollection(user: UserEntity, id: number, pictureId: number): Promise<Record<string, any>>;
     removePictureCollection(user: UserEntity, id: number, pictureId: number): Promise<{
         done: boolean;

@@ -24,6 +24,7 @@ export declare class UserEntity extends BaseEntity {
     cover?: string;
     bio: string;
     website: string;
+    isOnline: boolean;
     gender: number;
     genderSecret: boolean;
     birthday?: Date;
