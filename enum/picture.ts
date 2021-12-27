@@ -6,12 +6,16 @@ export enum UserPictureType {
   CHOICE = 'CHOICE',
 }
 
-
 export enum PicturesType {
   HOT = 'HOT',
   NEW = 'NEW',
   CHOICE = 'CHOICE',
   FEED = 'FEED',
+}
+
+export enum PictureMarkType {
+  USER = 'USER',
+  LOCATION = 'LOCATION'
 }
 
 export const UserPictureTypeValues = $enum(UserPictureType).map(key => UserPictureType[key]);
